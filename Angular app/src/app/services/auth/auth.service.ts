@@ -1,16 +1,29 @@
 import { Injectable } from '@angular/core';
 import { UserService } from '../api/user.service';
-import { Subject } from 'rxjs';
+import { Subject, of, tap } from 'rxjs';
 import { Participant } from 'src/app/models/participant';
 import { Admin } from 'src/app/models/admin';
 import { Organizer } from 'src/app/models/organizer';
 import { Role } from 'src/app/models/role';
 import { OrganizerService } from '../api/organizer.service';
 
+// for razorpay to get native window support
+function _window() : any {
+  // return the global native browser window object
+  return window;
+}
+
+
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
+
+  // for razorpay to get native window support
+  get nativeWindow() : any {
+    return _window();
+  }
+
   private _isAuth: boolean = false;
   private _authUser!: Admin | Organizer | Participant;
 
@@ -40,6 +53,13 @@ export class AuthService {
 
   set authUser(val: Admin | Organizer | Participant) {
     this._authUser = val;
+    this.authUserUpdates.next(this._authUser);
+  }
+
+  hasAuthenticatedUser() {
+    return of(this.isAuth && this.authUser.Role === Role.USER).pipe(
+      tap((v) => console.log(v))
+    );
   }
 
   // Initiate the login process
@@ -49,7 +69,8 @@ export class AuthService {
         this.userService
           .getUserByEmailAndPassword(email, password)
           .subscribe((data) => {
-            this.isAuth = !!data;
+            console.log(data);
+            this.isAuth = true;
             this.authUser = data;
           });
         break;
@@ -58,7 +79,7 @@ export class AuthService {
         this.organizerService
           .getOrganizerByEmailAndPassword(email, password)
           .subscribe((data) => {
-            this.isAuth = !!data;
+            this.isAuth = true;
             this.authUser = data;
           });
         break;
@@ -86,7 +107,12 @@ export class AuthService {
         Contact_No: contact_No,
       })
       .subscribe(() => {
-        this.isAuth = true;
+        this.userService
+          .getUserByEmailAndPassword(email, password)
+          .subscribe((data) => {
+            this.authUser = data;
+            this.isAuth = true;
+          });
       });
   }
 
@@ -104,7 +130,12 @@ export class AuthService {
         Contact_No: contact_No,
       })
       .subscribe(() => {
-        this.isAuth = true;
+        this.organizerService
+          .getOrganizerByEmailAndPassword(email, password)
+          .subscribe((data) => {
+            this.authUser = data;
+            this.isAuth = true;
+          });
       });
   }
 

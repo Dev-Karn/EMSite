@@ -1,7 +1,6 @@
 import {
   InMemoryDbService,
   RequestInfo,
-  RequestInfoUtilities,
   ResponseOptions,
   STATUS,
 } from 'angular-in-memory-web-api';
@@ -66,18 +65,18 @@ export class BackendService implements InMemoryDbService {
 
     //Adding additional attributes
     // for mainiting the structure
-    if (collectionName === 'user') {
+    if (collectionName === 'users') {
       data.UserID = idUpdater(collection);
       data.id = data.UserID;
-      data.role = Role.USER;
+      data.Role = Role.USER;
 
       data.TicketID = [];
     }
 
-    if (collectionName === 'organizer') {
+    if (collectionName === 'organizers') {
       data.UserID = idUpdater(collection);
       data.id = data.UserID;
-      data.role = Role.ORAGANIZER;
+      data.Role = Role.ORAGANIZER;
 
       data.EventID = [];
     }
@@ -97,7 +96,7 @@ export class BackendService implements InMemoryDbService {
       data.TicketID_List = [];
     }
 
-    if (['user', 'events', 'ticket', 'organizer'].includes(collectionName)) {
+    if (['users', 'events', 'ticket', 'organizers'].includes(collectionName)) {
       collection.push(data); //push the data on the right collection
 
       const resOptions: ResponseOptions = {
@@ -113,3 +112,4 @@ export class BackendService implements InMemoryDbService {
     return undefined;
   }
 }
+

@@ -19,3 +19,4 @@ export class AdminService extends AppRESTService {
       .pipe(tap(), catchError(this.handleError));
   }
 }
+
