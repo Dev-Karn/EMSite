@@ -13,7 +13,7 @@ import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.InsufficientAuthenticationException;
-import org.springframework.security.core.AuthenticationException;
+// import org.springframework.security.core.AuthenticationException;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.MissingServletRequestParameterException;
@@ -113,12 +113,14 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler
         return buildResponseEntity(new ApiError(HttpStatus.UNAUTHORIZED, "Access Denied", ex));
     }
 
-    @ExceptionHandler({ AuthenticationException.class })
-    @ResponseStatus(HttpStatus.UNAUTHORIZED)
-    public ResponseEntity<Object> handleOtherAuthException(BadCredentialsException ex,
-            WebRequest webRequest) {
-        return buildResponseEntity(new ApiError(HttpStatus.UNAUTHORIZED, "Access Denied", ex));
-    }
+    // @ExceptionHandler({ AuthenticationException.class })
+    // @ResponseStatus(HttpStatus.UNAUTHORIZED)
+    // public ResponseEntity<Object>
+    // handleOtherAuthException(BadCredentialsException ex,
+    // WebRequest webRequest) {
+    // return buildResponseEntity(new ApiError(HttpStatus.UNAUTHORIZED, "Access
+    // Denied", ex));
+    // }
 
     @ExceptionHandler({ BadCredentialsException.class, ConstraintViolationException.class })
     @ResponseStatus(HttpStatus.BAD_REQUEST)

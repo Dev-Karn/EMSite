@@ -1,9 +1,11 @@
 package com.example.springapp.model;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 import com.example.springapp.AccountRoles;
 import com.example.springapp.request.SignUpRequest;
@@ -13,6 +15,8 @@ import lombok.Setter;
 
 @Getter
 @Setter
+@Entity
+@Table(name = "user")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,6 +38,10 @@ public class User {
 
     public void setRole(AccountRoles role) {
         this.role = String.valueOf(role);
+    }
+
+    public User() {
+
     }
 
     public User(SignUpRequest sr) {

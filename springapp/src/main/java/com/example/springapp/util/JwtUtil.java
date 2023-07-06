@@ -11,22 +11,21 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 @Service
 public class JwtUtil {
 
-  @Value("${secretjwt}")
-  private String secretkey;
+  // @Value("${secretjwt}")
+  // private String secretkey;
 
   private Key getSigningKey() {
     byte[] keyBytes = this.secretkey.getBytes(StandardCharsets.UTF_8);
     return Keys.hmacShaKeyFor(keyBytes);
   }
 
-  // private String secretkey =
-  // "07c73e9bb13f0f22f411d5079e7c0d50555c929eea5a833d539fcf318610b79a";
+  private String secretkey = "07c73e9bb13f0f22f411d5079e7c0d50555c929eea5a833d539fcf318610b79a";
+
   public String extractEmail(String token) {
     return extractClaim(token, Claims::getSubject);
   }
