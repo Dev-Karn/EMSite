@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,7 +13,7 @@ import { SliderComponent } from './landing_page/slider/slider.component';
 import { HttpClientModule } from '@angular/common/http';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CreateventComponent } from './organizer/createvent/createvent.component';
 import { EditeventformComponent } from './organizer/editeventform/editeventform.component';
 import { EventdisplayComponent } from './organizer/eventdisplay/eventdisplay.component';
@@ -59,9 +59,26 @@ import { NgChartsModule } from 'ng2-charts';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
+import { EventService } from './admin/admin_services/a-event.service';
+import { TicketService } from './admin/admin_services/a-ticket.service';
+import { UserService } from './admin/admin_services/a-user.service';
 import { EventDetailsComponent } from './event-details/event-details.component';
 import { SpeakerDetailsComponent } from './event-details/speaker-details/speaker-details.component';
 import { SearchAlleventsComponent } from './search-allevents/search-allevents.component';
+import { PaymentpageComponent } from './paymentpage/paymentpage.component';
+import { OrdersummaryComponent } from './paymentpage/ordersummary/ordersummary.component';
+import { PaymentmodeComponent } from './paymentpage/paymentmode/paymentmode.component';
+import { LottieModule } from 'ngx-lottie';
+import { CommonModule } from '@angular/common';
+import { AdminAuthService } from './admin/admin_services/a-auth.service';
+import { AdminGuard } from './admin/admin_services/admin-guard/admin-guard.service';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { BackendService } from './services/api/backend.service';
+
+// player-factory
+export function playerFactory() {
+  return import(/* webpackChunkName: 'lottie-web' */ 'lottie-web');
+}
 
 @NgModule({
   declarations: [
@@ -115,20 +132,36 @@ import { SearchAlleventsComponent } from './search-allevents/search-allevents.co
     ListSearchComponent,
     EventDetailsComponent,
     SpeakerDetailsComponent,
-    SearchAlleventsComponent
+    SearchAlleventsComponent,
+    PaymentpageComponent,
+    OrdersummaryComponent,
+    PaymentmodeComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    // HttpClientInMemoryWebApiModule.forRoot(BackendService),
     NgChartsModule,
     FormsModule,
     MatIconModule,
     MatInputModule,
     MatFormFieldModule,
     MatTableModule,
+    ReactiveFormsModule,
+    LottieModule,
+    LottieModule.forRoot({ player: playerFactory }),
+    CommonModule,
   ],
-  providers: [EventsService],
-  bootstrap: [AppComponent]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  providers: [
+    EventsService,
+    EventService,
+    TicketService,
+    UserService,
+    AdminAuthService,
+    AdminGuard,
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
