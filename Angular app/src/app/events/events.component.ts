@@ -1,9 +1,9 @@
 import { Component,Output,EventEmitter, Inject } from '@angular/core';
 import { Router } from '@angular/router';
-import { arrow } from '@popperjs/core';
 import { EventsService } from '../services/api/events.service';
 import { Event } from '../models/event';
 import { DatePipe } from '@angular/common';
+
 
 @Component({
   selector: 'app-events',
@@ -49,7 +49,7 @@ export class EventsComponent {
     console.log(this.searchText);
     for(let i=0;i<this.events.length;i++){
       const eventName = this.events[i].name.toLowerCase();
-      const startDate = this.events[i].start_date.toLowerCase();
+      const startDate = this.events[i].startDate.toLowerCase();
 
 
       if(eventName.includes(this.searchText) || startDate.includes(this.searchText)){

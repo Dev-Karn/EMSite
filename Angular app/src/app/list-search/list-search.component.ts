@@ -2,7 +2,7 @@ import { Component,OnInit, EventEmitter,ElementRef,Output} from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { startWith, map } from 'rxjs/operators';
-import { EventsService } from '../services/event-service/events.service';
+import { EventsService } from '../services/api/events.service';
 
 @Component({
   selector: 'app-search',
