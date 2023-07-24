@@ -1,5 +1,10 @@
-<form #form="ngForm" (ngSubmit)="addEvent(form)">
-  <div class="bg">
+<router-outlet name="nav" id="head-nav"></router-outlet>
+<div class="back">
+  <div class="col-md-2 nav">
+    <button class="btn-primary" id="btn1" (click)="newEvent()">Create New Event</button>
+    <button class="btn-primary" id="btn2" (click)="manageEvent()">Manage Events</button>
+  </div>
+<form #form="ngForm" class="bg" (ngSubmit)="addEvent(form)">
     <div class="container">
       <h1 style="color: white; text-align: center; margin-top: 80px; padding-top: 10px; padding-left: 5px;">
         Fill The Event Details
@@ -38,7 +43,7 @@
         <div class="form-row">
           <div class="form-group col-md-6">
             <label for="input">Speaker Affiliation</label>
-            <input type="text" class="form-control" name="speakerAffiliation" id="input" placeholder="" [(ngModel)]="event.speakerAffiliations" required>
+            <input type="text" class="form-control" name="speakerAffiliations" id="input" placeholder="" [(ngModel)]="event.speakerAffiliations" required>
           </div>
           <div class="col">
             <div class="form-group">
@@ -89,7 +94,7 @@
         <div class="form-row">
           <div class="form-group col-md-6">
             <label class="form-label" for="imageUrl">Event Image Url</label>
-            <input type="text" class="form-control" name="imgUrl" [(ngModel)]="event.imgUrl" id="img" />
+            <input type="text" class="form-control" name="imgUrl" required [(ngModel)]="event.imgUrl" id="img" />
           </div>
         </div>
         <div class="form-check">
@@ -103,10 +108,12 @@
         &nbsp;
         &nbsp;
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" (click)="form.reset()">Close</button>&nbsp;
-          <button type="submit" class="btn btn-primary">Submit</button>
+          <button type="button" class="btn btn-secondary" (click)="close()">Close</button>&nbsp;
+          <button type="submit" class="btn btn-primary" [disabled]="!form.valid" >Submit</button>
         </div>
       </div>
     </div>
-  </div>
 </form>
+</div>
+
+<app-footer></app-footer>

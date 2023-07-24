@@ -51,13 +51,14 @@ export class EventsService extends AppRESTService {
   }
 
   
- getEventById(id:number){
+ getEvent(id:number){
       return this.http.get<Event>(this.BASE_URL+'/'+id)
  }
 
   addEvent(input: EventInput) {
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
-
+    console.log("event insert ");
+    
     return this.http
       .post<string>(this.BASE_URL, input, {
         headers,
@@ -71,6 +72,33 @@ export class EventsService extends AppRESTService {
           console.log(err);
         }
       );
+  }
+
+  deleteEvent(id:number){
+    return this.http.delete(this.BASE_URL+"/"+id);
+  }
+
+  updateEvent(id:number,input:any){
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+    console.log("event insert ");
+    
+    return this.http
+      .put<string>(this.BASE_URL+"/"+id, input, {
+        headers,
+        responseType: 'text' as 'json',
+      })
+      .subscribe(
+        (data) => {
+          console.log(data); 
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
+  }
+  
+  getEventsByOrganiserId(id:number){
+    return this.http.get<Event[]>(`${this.BASE_URL}/organiser/${id}`);
   }
 }
 

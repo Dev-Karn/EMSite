@@ -43,7 +43,7 @@ export class EventsComponent {
     console.log(this.events);
   }
 
-  onSearchTexEntered(searchValue: string){
+  onSearchTexEntered(searchValue: string) {
     this.searchText = searchValue.toLowerCase();
     let array = []
     console.log(this.searchText);
@@ -57,7 +57,7 @@ export class EventsComponent {
       // console.log(this.events[i].name);
       }
     }
-
+  
     if (array.length === 0) {
       // No events found
       this.eventsNotFound = true;
@@ -65,9 +65,10 @@ export class EventsComponent {
       // Events found
       this.eventsNotFound = false;
     }
-    console.log(array);
-    this.temp=array;
+  
+    this.temp = array;
   }
+  
   
   redirectToEventDetails(id:any): void {
     console.log(id);

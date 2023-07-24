@@ -15,7 +15,7 @@ export class ListSearchComponent implements OnInit{
   ngOnInit(): void{
   }
 
-  constructor(private event:EventsService) {
+  constructor() {
   }
   
   enteredSearchValue: string = '';
