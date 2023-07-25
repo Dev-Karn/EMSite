@@ -21,7 +21,10 @@ export class AUserComponent {
   deleteUser(){
     this.us.deleteUser(this.user.id).subscribe(data=>{
       console.log(data);
-      this.us.getUsers().subscribe(data=>{this.us.filterUpdate.next(data);this.us.isDeleted.next(true);setInterval(()=>this.us.isDeleted.next(false),2000)});
+      var users:user[];
+      this.us.getUsers().subscribe(data=>{
+        data.forEach((d=>{var name:string[]=this.us.splitName(d.name);d.f_name=name[0];d.l_name=name[1];}));users=data});
+      this.us.getUsers().subscribe(data=>{this.us.filterUpdate.next(users);this.us.isDeleted.next(true);setInterval(()=>this.us.isDeleted.next(false),2000)});
     })
   }
 }
