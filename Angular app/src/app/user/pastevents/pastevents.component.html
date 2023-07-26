@@ -2,26 +2,26 @@
     <thead>
       <tr>
         <th>S.No</th>
-        <th>Booking Id</th>
+        <th>Event Id</th>
         <th>Event Name</th>
-        <th>Venue</th>
-        <th>Date</th>
+        <th>Start DateTime</th>
+        <th>End DateTime</th>
         <th>Location</th>
         <th>Total Cost</th>
         <th>Payment Status</th>
       </tr>
     </thead>
     <tbody>
-      <ng-container *ngFor="let booking of pastrecord;let ioe=index">
-        <tr *ngIf="booking.paymentStatus !='Refundstatus'">
-        <td>{{ booking.sno }}</td>
-        <td>{{ booking.bookingId }}</td>
-        <td>{{ booking.eventName }}</td>
-        <td>{{ booking.venue }}</td>
-        <td>{{ booking.date }}</td>
-        <td>{{ booking.location }}</td>
-        <td>{{ booking.totalCost }}</td>
-        <td>{{ booking.paymentStatus }}</td>
+      <ng-container *ngFor="let booking of pasteventslist;let ioe=index">
+        <tr *ngIf="booking.status =='booked'">
+          <td>{{ ioe + 1 }}</td>
+          <td>E{{ booking.event.id }}</td>
+          <td>{{ booking.event.name }}</td>
+          <td>{{ booking.event.startDate | dateTimePipe}}</td>
+          <td>{{ booking.event.endDate | dateTimePipe}}</td>
+          <td>{{ booking.event.location }}</td>
+          <td>{{ booking.event.price }}</td>
+          <td>{{ booking.status }}</td>
         </tr>
     </ng-container>
     </tbody>

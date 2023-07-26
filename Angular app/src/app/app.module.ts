@@ -72,6 +72,7 @@ import { AdminGuard } from './admin/admin_services/admin-guard/admin-guard.servi
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { BackendService } from './services/api/backend.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DateTimePipePipe } from './pipes/date-time-pipe.pipe';
 
 // player-factory
 export function playerFactory() {
@@ -134,6 +135,7 @@ export function playerFactory() {
     PaymentpageComponent,
     OrdersummaryComponent,
     PaymentmodeComponent,
+    DateTimePipePipe,
   ],
   imports: [
     BrowserModule,

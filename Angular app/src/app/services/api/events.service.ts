@@ -102,7 +102,7 @@ export class EventsService extends AppRESTService {
   }
 
   getEventsByUserId(userid:number){
-    return this.http.get<Event[]>(`${this.BASE_URL}/event/user/attendee/${userid}`);
+    return this.http.get<Event[]>(`${this.BASE_URL}/user/attendee/${userid}`);
   }
 }
 
