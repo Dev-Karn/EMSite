@@ -46,6 +46,8 @@ export class EventsService extends AppRESTService {
     super();
   }
   getEvents() {
+    console.log("event service called..");
+    
     return this.http
       .get<Event[]>(this.BASE_URL);
   }

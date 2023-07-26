@@ -73,6 +73,7 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { BackendService } from './services/api/backend.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DateTimePipePipe } from './pipes/date-time-pipe.pipe';
+import { AAuthInterceptorService } from './admin/admin_services/a-interceptor.service';
 
 // player-factory
 export function playerFactory() {

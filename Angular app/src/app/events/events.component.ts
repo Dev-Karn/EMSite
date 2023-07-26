@@ -24,7 +24,7 @@ export class EventsComponent {
   searchText: string='';
   temp: any[]=this.events;
 
-  constructor(private router: Router,@Inject(EventsService) private es: EventsService) {
+  constructor(private router: Router, private es: EventsService) {
     
   }
   
@@ -32,7 +32,7 @@ export class EventsComponent {
     //this.eventser.getAllEvents().forEach((data)=> this.events.push(data));
   
     this.es.getEvents().subscribe((Response:Event[])=>{
-      console.log(Response);
+      console.log("Event fetched frm events page are :" +Response);
       this.temp=[...Response].filter((data)=>{
           return data.organiser!=null;
       });
