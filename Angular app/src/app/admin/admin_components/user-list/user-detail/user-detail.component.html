@@ -58,8 +58,8 @@
               </div>
               <div *ngIf="user.role==='ROLE_ORGANISER'">
                   <label>Previously Organized events by the User</label>
-                  <ul class="list-group" *ngFor="let event of user.previous_organized_events">
-                      <li class="list-group-item">{{event}}</li>
+                  <ul class="list-group" style="width: 500px;padding-bottom: -210x;" *ngFor="let event of events">
+                    <a [routerLink]="'/admin/manage-events/' + event.id"><li class="list-group-item" >Event id:&nbsp;{{event.id}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;Event Name:&nbsp;{{event.name}}</li></a>
                   </ul>
               </div>
           </form>
