@@ -181,7 +181,8 @@ export class PaymentmodeComponent implements OnInit {
           email : this.userDetails.email,
           phone : this.userDetails.phone,
           address : this.userDetails.address,
-          event : this.eventDetails
+          event : this.eventDetails,
+          user: this.userDetails
         }
 
         let ticket = {

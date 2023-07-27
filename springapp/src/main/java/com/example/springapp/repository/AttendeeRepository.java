@@ -7,4 +7,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface AttendeeRepository extends JpaRepository<Attendee, Long> {
 
     public List<Attendee> findByEventId(long id);
+
+    public List<Attendee> findByUserId(long id);
 }
