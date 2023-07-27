@@ -116,7 +116,7 @@ export class AuthService {
   logout() {
     this.isAuth = false;
     this.authUser = null;
-
+    
     localStorage.removeItem(this.JWT);
   }
 

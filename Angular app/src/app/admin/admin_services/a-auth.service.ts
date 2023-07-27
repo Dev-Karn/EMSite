@@ -1,6 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable, inject } from "@angular/core";
 import { Router } from "@angular/router";
+import { AuthService } from "src/app/services/auth/auth.service";
 
 
 interface loginResponse{
@@ -16,9 +17,9 @@ export class AdminAuthService{
 
     route=inject(Router);
     isLoggedIn:boolean;
-    url="http://localhost:8080/signin";
+    url=localStorage.getItem("BASE_URL")+"/signin";
     token:string="";
-    constructor(private http:HttpClient){
+    constructor(private http:HttpClient,private auth:AuthService){
 
     }
 
@@ -43,6 +44,8 @@ export class AdminAuthService{
     // }
 
     logout(){
+        localStorage.clear();
+        this.auth.logout();
         this.isLoggedIn=false;
         console.log('Admin has logged out successfully');
     }
