@@ -136,6 +136,7 @@ export function playerFactory() {
     OrdersummaryComponent,
     PaymentmodeComponent,
     EventChartComponent,
+    DateTimePipePipe
   ],
   imports: [
     BrowserModule,

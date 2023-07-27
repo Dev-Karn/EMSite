@@ -19,7 +19,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 
 @RestController
 @RequestMapping("/ticket")
-@CrossOrigin(value = "http://localhost:8081")
+@CrossOrigin(value = "*")
 public class TicketController {
 
     private final TicketService ticketService;
