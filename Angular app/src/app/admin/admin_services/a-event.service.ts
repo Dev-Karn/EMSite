@@ -26,4 +26,7 @@ export class EventService{
     deleteEvent(id:number){
       return this.http.delete(this.url+"/"+id);
     }
+    getEventsByOrganiserId(id:number){
+      return this.http.get<Event[]>(`${this.url}/organiser/${id}`);
+    }
 }

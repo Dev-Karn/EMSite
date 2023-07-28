@@ -33,7 +33,6 @@ import { TotalEventCardComponent } from './admin/admin_components/admin-dashboar
 import { TotalUserCardComponent } from './admin/admin_components/admin-dashboard/main-panel/cards/total-user-card/total-user-card.component';
 import { RecentComponent } from './admin/admin_components/admin-dashboard/main-panel/recent/recent.component';
 import { RevenueChartComponent } from './admin/admin_components/admin-dashboard/main-panel/revenue-chart/revenue-chart.component';
-import { UserChartComponent } from './admin/admin_components/admin-dashboard/main-panel/user-chart/user-chart.component';
 import { AdminHeadNavComponent } from './admin/admin_components/admin-head-nav/admin-head-nav.component';
 import { EventListingComponent } from './admin/admin_components/event-listing/event-listing.component';
 import { AEventDetailComponent } from './admin/admin_components/event-listing/a-event-detail/a-event-detail.component';
@@ -74,6 +73,7 @@ import { BackendService } from './services/api/backend.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DateTimePipePipe } from './pipes/date-time-pipe.pipe';
 import { AAuthInterceptorService } from './admin/admin_services/a-interceptor.service';
+import { EventChartComponent } from './admin/admin_components/admin-dashboard/main-panel/event-chart/event-chart.component';
 
 // player-factory
 export function playerFactory() {
@@ -110,7 +110,6 @@ export function playerFactory() {
     TotalUserCardComponent,
     RecentComponent,
     RevenueChartComponent,
-    UserChartComponent,
     AdminHeadNavComponent,
     EventListingComponent,
     AEventDetailComponent,
@@ -136,7 +135,8 @@ export function playerFactory() {
     PaymentpageComponent,
     OrdersummaryComponent,
     PaymentmodeComponent,
-    DateTimePipePipe,
+    EventChartComponent,
+    DateTimePipePipe
   ],
   imports: [
     BrowserModule,
